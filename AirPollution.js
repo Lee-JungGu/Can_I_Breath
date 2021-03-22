@@ -53,9 +53,11 @@ export default function AirPollution({
           {comparePollutionLevel().grade}
         </Text>
       </View>
+
       <View style={styles.subText}>
         <Text style={styles.comment}>{comparePollutionLevel().text}</Text>
       </View>
+
       <View style={styles.weatherContent}>
         <View
           style={[
@@ -74,6 +76,7 @@ export default function AirPollution({
             </Text>
             <Text style={styles.weatherBoxLevel}>{airPollutionLevel}</Text>
           </View>
+
           <View style={styles.weatherBoxContent}>
             <Text style={styles.weatherBoxTitle}>초미세먼지</Text>
             <FontAwesome5
@@ -85,6 +88,7 @@ export default function AirPollution({
             </Text>
             <Text style={styles.weatherBoxLevel}>{microAirPollutionLevel}</Text>
           </View>
+
           <View style={[styles.weatherBoxContent, { borderRightWidth: 0 }]}>
             <Text style={styles.weatherBoxTitle}>날씨</Text>
             <MaterialCommunityIcons

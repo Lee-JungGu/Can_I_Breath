@@ -10,11 +10,11 @@ const SECRET_KEY = "BoOadcth2YH5h8XP3x5o7XGOd3Bwr42O";
 export default class App extends React.Component {
   state = {
     isLoading: true,
-    airPollutionLevel: null,
-    microAirPollutionLevel: null,
-    district: null,
-    temperature: null,
-    weather: null,
+    airPollutionLevel: "",
+    microAirPollutionLevel: "",
+    district: "",
+    temperature: "",
+    weather: "",
   };
 
   getWeather = async (latitude, longitude) => {
