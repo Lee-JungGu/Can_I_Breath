@@ -267,7 +267,7 @@ export default function AirPollution({
             style={styles.mainEmoji}
           />
         </Animated.View>
-        <Text style={styles.airPollutionLevel}>
+        <Text style={styles.airPollutionGrade}>
           {comparePollutionLevel().grade}
         </Text>
       </View>
@@ -340,8 +340,8 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 20,
   },
-  airPollutionLevel: {
-    fontSize: 40,
+  airPollutionGrade: {
+    fontSize: 30,
     color: "white",
   },
 
@@ -359,7 +359,6 @@ const styles = StyleSheet.create({
 
   weatherContent: {
     flex: 3,
-    // justifyContent: "center",
     alignItems: "center",
   },
   weatherBox: {
@@ -371,13 +370,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: "white",
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 1,
-      height: 2,
-    },
-    shadowOpacity: 0.5,
-    shadowColor: "#2c2c2c",
   },
   weatherBoxContent: {
     flex: 1,
