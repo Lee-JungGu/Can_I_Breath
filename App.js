@@ -2,7 +2,7 @@ import React from "react";
 import { Alert } from "react-native";
 import * as Location from "expo-location";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "./component/Loading";
 import AirPollution from "./AirPollution";
 
 const SECRET_KEY = "BoOadcth2YH5h8XP3x5o7XGOd3Bwr42O";
