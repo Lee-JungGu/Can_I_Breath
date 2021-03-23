@@ -23,12 +23,10 @@ export default function AirPollution({
   });
 
   const comparePollutionLevel = () => {
-    if (
-      AirPollutionInfo(airPollutionLevel).gradeNumber >
+    return AirPollutionInfo(airPollutionLevel).gradeNumber >
       MicroAirPollutionInfo(microAirPollutionLevel).gradeNumber
-    )
-      return AirPollutionInfo(airPollutionLevel);
-    else return MicroAirPollutionInfo(microAirPollutionLevel);
+      ? AirPollutionInfo(airPollutionLevel)
+      : MicroAirPollutionInfo(microAirPollutionLevel);
   };
 
   useEffect(() => {
