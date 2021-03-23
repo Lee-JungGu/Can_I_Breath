@@ -5,8 +5,6 @@ import axios from "axios";
 import Loading from "./component/Loading";
 import AirPollution from "./AirPollution";
 
-const SECRET_KEY = "BoOadcth2YH5h8XP3x5o7XGOd3Bwr42O";
-
 export default class App extends React.Component {
   state = {
     isLoading: true,
@@ -19,8 +17,9 @@ export default class App extends React.Component {
 
   getWeather = async (latitude, longitude) => {
     try {
+      const API_KEY = "BoOadcth2YH5h8XP3x5o7XGOd3Bwr42O";
       const wheather = await axios(
-        `https://data.climacell.co/v4/timelines?location=${latitude},${longitude}&fields=temperature,weatherCode,particulateMatter25,particulateMatter10&timesteps=current&units=metric&apikey=${SECRET_KEY}`
+        `https://data.climacell.co/v4/timelines?location=${latitude},${longitude}&fields=temperature,weatherCode,particulateMatter25,particulateMatter10&timesteps=current&units=metric&apikey=${API_KEY}`
       );
       const {
         data: {
