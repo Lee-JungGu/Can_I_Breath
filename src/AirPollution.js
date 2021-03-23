@@ -21,6 +21,7 @@ export default function AirPollution({
     tension: 100,
     useNativeDriver: true,
   });
+
   const comparePollutionLevel = () => {
     if (
       AirPollutionInfo(airPollutionLevel).gradeNumber >
