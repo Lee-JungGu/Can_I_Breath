@@ -57,6 +57,13 @@ export default class App extends React.Component {
     }
   };
 
+  checkDistrict = (district, cityName) => {
+    if (district != null) this.setState({ district });
+    else if (district === null && cityName != null)
+      this.setState({ district: cityName });
+    else this.setState({ district: "현재 위치" });
+  };
+
   getLocation = async () => {
     try {
       await Location.requestPermissionsAsync();
@@ -65,14 +72,11 @@ export default class App extends React.Component {
       const {
         coords: { latitude, longitude },
       } = location;
+
       const city = await Location.reverseGeocodeAsync({ latitude, longitude });
-      const { city: cityName, district } = city[0];
+      const [{ city: cityName, district }] = city;
 
-      if (district != null) this.setState({ district });
-      else if (district === null && cityName != null)
-        this.setState({ district: cityName });
-      else this.setState({ district: "현재 위치" });
-
+      this.checkDistrict(district, cityName);
       this.getWeather(latitude, longitude);
     } catch {
       Alert.alert(
