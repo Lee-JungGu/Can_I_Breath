@@ -15,9 +15,10 @@ export default class App extends React.Component {
     weather: "",
   };
 
-  getWeather = async (latitude, longitude) => {
+  getWeather = async () => {
     try {
       const API_KEY = "BoOadcth2YH5h8XP3x5o7XGOd3Bwr42O";
+      const { latitude, longitude } = await this.getLocation();
       const wheather = await axios(
         `https://data.climacell.co/v4/timelines?location=${latitude},${longitude}&fields=temperature,weatherCode,particulateMatter25,particulateMatter10&timesteps=current&units=metric&apikey=${API_KEY}`
       );
@@ -57,6 +58,16 @@ export default class App extends React.Component {
     }
   };
 
+  getCity = async () => {
+    try {
+      const { latitude, longitude } = await this.getLocation();
+      const city = await Location.reverseGeocodeAsync({ latitude, longitude });
+      const [{ city: cityName, district }] = city;
+
+      this.checkDistrict(district, cityName);
+    } catch {}
+  };
+
   checkDistrict = (district, cityName) => {
     if (district != null) this.setState({ district });
     else if (district === null && cityName != null)
@@ -73,11 +84,9 @@ export default class App extends React.Component {
         coords: { latitude, longitude },
       } = location;
 
-      const city = await Location.reverseGeocodeAsync({ latitude, longitude });
-      const [{ city: cityName, district }] = city;
-
-      this.checkDistrict(district, cityName);
-      this.getWeather(latitude, longitude);
+      // this.getCity(latitude, longitude);
+      // this.getWeather(latitude, longitude);
+      return { latitude, longitude };
     } catch {
       Alert.alert(
         "위치정보 승인이 필요합니다.",
@@ -87,7 +96,9 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    this.getLocation();
+    // this.getLocation();
+    this.getCity();
+    this.getWeather();
   }
 
   render() {
