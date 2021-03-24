@@ -66,7 +66,7 @@ export default class App extends React.Component {
     return this.setState({ district: "현재 위치" });
   };
 
-  getLocation = async () => {
+  getLocation = () => {
     try {
       navigator.geolocation.getCurrentPosition((position) => {
         const {
